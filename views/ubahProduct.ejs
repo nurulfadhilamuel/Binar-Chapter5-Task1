@@ -1,0 +1,21 @@
+<h1>Form ubah product</h1>
+<form action="/update?_method=PUT" method="POST">
+    <input type="hidden" name="id" value="<%= books.id %>" />
+    <div class="mb-3">
+        <label for="name" class="form-label">Nama Buku</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= books.title_book %>" required />
+    </div>
+    <div class="mb-3">
+        <label for="priace" class="form-label">Penulis</label>
+        <input type="text" class="form-control" id="priace" name="priace" value="<%= books.writer %>" required />
+    </div>
+    <div class="mb-3">
+        <label for="type" class="form-label">Tahun Terbit</label>
+        <input type="text" class="form-control" id="type" name="type" value="<%= books.year_publish %>" required />
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">User id</label>
+        <input type="text" class="form-control" id="image" name="image" value="<%= books.createdAt %>" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

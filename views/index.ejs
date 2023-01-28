@@ -1,0 +1,56 @@
+<% if (msg.length !==0) { %>
+    <div class="alert alert-success text-center" role="alert">
+        <%= msg %>
+    </div>
+    <% } %>
+        <h1 class="mb-3">Daftar Products</h1>
+        <a href="/tambah" class="btn btn-primary text-decoration-none mb-3">Tambah Product</a>
+        <form class="mb-3">
+            <input type="text" name="name" placeholder="masukan namauser..." />
+        </form>
+        <table class="table table-dark table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Buku</th>
+                    <th scope="col">Penulis</th>
+                    <th scope="col">Tahun Terbit</th>
+                    <th scope="col">Dibuat Pada</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% i=1 %>
+                    <% books.forEach((book)=>{ %>
+                        <tr>
+                            <th scope="row">
+                                <%= i++ %>
+                            </th>
+                            <td>
+                                <%= book.title_books %>
+                            </td>
+                            <td>
+                                <%= book.writer %>
+                            </td>
+                            <td>
+                                <%= book.year_publish %>
+                            </td>
+                            <td>
+                                <%= book.user_id %>
+                            </td>
+                            <td>
+                                <a href="/detail/<%= book.id %>" class="badge bg-primary text-decoration-none"><i
+                                        class="bi bi-eye-fill"></i></a>
+                                <a href="/ubah/<%= book.id %>" class="badge bg-primary text-decoration-none"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <form action="/hapus?_method=DELETE" method="POST" class="d-inline">
+                                    <input type="hidden" name="id" value="<%= book.id %>" />
+                                    <button class="badge bg-primary text-decoration-none border border-0"
+                                        onclick='return confirm("yakin mau dihapus?")'><i
+                                            class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+            </tbody>
+        </table>
